@@ -14,6 +14,7 @@ jobs:
           DESIRED_VERSION: v3.6.2
         run: |
           curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+          helm repo add bitnami https://charts.bitnami.com/bitnami
 
       - name: Upload new helm chart
         run: |
