@@ -21,6 +21,7 @@ jobs:
           mkdir -p /tmp/helm
           helm dependency build
           helm package . -d /tmp/helm
+          git fetch
           git checkout gh-pages
           git reset --hard HEAD
           git clean -fdx
