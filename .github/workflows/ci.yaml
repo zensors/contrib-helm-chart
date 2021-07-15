@@ -18,8 +18,11 @@ jobs:
       - name: Upload new helm chart
         run: |
           mkdir -p /tmp/helm
+          helm dependency build
           helm package . -d /tmp/helm
           git checkout gh-pages
+          git reset --hard HEAD
+          git clean -fdx
           cp /tmp/helm/* .
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
