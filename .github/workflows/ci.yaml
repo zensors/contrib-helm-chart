@@ -1,0 +1,26 @@
+name: CI
+on:
+  # Lines below let you run workflow manually and on each commit (optional)
+  push: {branches: ["master", "main"]}
+  workflow_dispatch:
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install Helm
+        env:
+          DESIRED_VERSION: v3.6.2
+        run: |
+          curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+
+      - name: Upload new helm chart
+        run: |
+          mkdir -p /tmp/helm
+          helm package . -d /tmp/helm
+          git checkout gh-pages
+          cp /tmp/helm/* .
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A && git commit -m "Update Content - [Skip GitHub Action]" && git push || true
