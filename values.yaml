@@ -280,6 +280,8 @@ redash:
 
 ## Configuration for Redash web server
 server:
+  uiExtras: {}
+
   # server.httpPort -- Server container port (only useful if you are using a customized image)
   httpPort: 5000
 
