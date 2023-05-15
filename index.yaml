@@ -31,7 +31,7 @@ entries:
     urls:
     - redash-2.3.1.tgz
     version: 2.3.1
-   - apiVersion: v1
+  - apiVersion: v1
     appVersion: 8.0.2.b37747
     created: "2021-05-14T19:29:10.771816073Z"
     dependencies:
